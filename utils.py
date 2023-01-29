@@ -9,7 +9,7 @@ from bisect import bisect
 def group(iterator, count):
     itr = iter(iterator)
     while True:
-        yield [itr.next() for i in range(count)]
+        yield [itr.next() for _ in range(count)]
 
 #-----------------------------------------------------------------------------#
 

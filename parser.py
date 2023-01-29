@@ -48,9 +48,9 @@ class Parser(object):
 		# Shift out synchronization bits
 		if raw_data[0] == 0:
 			del raw_data[0]
-		while raw_data[0:2] == '0b10':
-			del raw_data[0:2]
-		del raw_data[0:5]
+		while raw_data[:2] == '0b10':
+			del raw_data[:2]
+		del raw_data[:5]
 
 		result = bs.BitArray()
 		for pentabit in raw_data.cut(5):
