@@ -9,7 +9,7 @@ from bisect import bisect
 def group(iterator, count):
     itr = iter(iterator)
     while True:
-        yield [itr.next() for _ in range(count)]
+        yield [next(itr) for _ in range(count)]
 
 #-----------------------------------------------------------------------------#
 
@@ -17,10 +17,10 @@ def fft(signal, framerate):
     signal = np.fromstring(''.join(signal), dtype=np.int16)
     fourier = np.fft.fft(signal)/len(signal)
     freqs = np.fft.fftfreq(len(signal))
-    freqs = map(lambda x: abs(x * framerate), freqs)
-    fourier = map(np.abs, fourier)
+    freqs = [abs(x * framerate) for x in freqs]
+    fourier = list(map(np.abs, fourier))
 
-    return dict(zip(freqs, fourier))
+    return dict(list(zip(freqs, fourier)))
 
 #-----------------------------------------------------------------------------#
 
@@ -41,7 +41,7 @@ def fft_dist(amps):
     s = sum(amps.values())
     res = amps
 
-    for key in res.keys():
+    for key in list(res.keys()):
         res[key] = res[key]/s if s else 0
 
     return res

@@ -3,14 +3,14 @@
 
 from transceiver import Receiver
 
-print "############################"
-print "# RECEIVER                 #"
-print "############################"
+print("############################")
+print("# RECEIVER                 #")
+print("############################")
 
-addr = raw_input('Type host address (eg. 0xABCD): ')
+addr = input('Type host address (eg. 0xABCD): ')
 rc = Receiver(addr, 200, 44100)
 
 while True:
     (addr, msg) = rc.listen(addr)
-    print "Received message from %s" % addr
-    print msg
+    print("Received message from %s" % addr)
+    print(msg)

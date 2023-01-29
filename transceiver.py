@@ -81,7 +81,7 @@ class Receiver(object):
                 inp.append('0b1')
                 trailing_zeros = 0
 
-        print min_
+        print(min_)
         return inp
 
     def listen(self, addr):
@@ -98,9 +98,9 @@ class Receiver(object):
                 if not string:
                     continue
 
-                print "------BINARY INPUT START-------"
-                print string.bin
-                print "------BINARY INPUT END-------"
+                print("------BINARY INPUT START-------")
+                print(string.bin)
+                print("------BINARY INPUT END-------")
 
                 (src_addr, dest_addr, msg) = Parser.decode(string)
 
@@ -153,8 +153,8 @@ class Transmitter(object):
         out.append(Parser.encode(self.addr, msg_addr, bs.BitArray(bytes=msg)))
         out.append(bs.BitArray('0b0')  * 16)
 
-        print "------BINARY OUTPUT START-------"
-        print out.bin
-        print "------BINARY OUTPUT END-------"
+        print("------BINARY OUTPUT START-------")
+        print(out.bin)
+        print("------BINARY OUTPUT END-------")
 
         self.play_bitarray(out)
